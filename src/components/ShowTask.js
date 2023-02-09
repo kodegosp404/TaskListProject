@@ -1,22 +1,18 @@
-export const ShowTask = () => {
-  const tasks = [
-    { id: 10001, name: 'TASK A', time: '2:09:01 AM 02/08/2023' },
-    { id: 10002, name: 'TASK B', time: '2:09:01 AM 02/08/2023' },
-    { id: 10003, name: 'TASK C', time: '2:09:01 AM 02/08/2023' },
-  ];
-
+export const ShowTask = ({ tasklist, setTasklist }) => {
   return (
     <section className="showTask">
       <div className="head">
         <div>
           <span className="title">Todo</span>
-          <span className="count">0</span>
+          <span className="count">{tasklist.length}</span>
         </div>
-        <button className="clearAll">Clear All</button>
+        <button onClick={() => setTasklist([])} className="clearAll">
+          Clear All
+        </button>
       </div>
       <ul>
-        {tasks.map((task) => (
-          <li>
+        {tasklist.map((task) => (
+          <li key={task.id}>
             <p>
               <span className="name">{task.name}</span>
               <span className="time">{task.time}</span>
